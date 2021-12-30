@@ -12,8 +12,9 @@ class RestService {
 
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
+    } else {
+      throw response.statusCode;
     }
-    throw response.statusCode;
   }
 
   Future post(String endpoint, {dynamic data}) async {
@@ -23,7 +24,7 @@ class RestService {
         },
         body: jsonEncode(data));
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       return jsonDecode(response.body);
     }
 
