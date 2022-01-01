@@ -1,22 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_jsonplaceholder/services/posts_service/posts_rest.dart';
+import 'package:flutter_jsonplaceholder/services/posts_service/posts_service.dart';
 
+import '../../app/di/dependency.dart';
 import '../../models/Post.dart';
 
 class PostViewModel extends ChangeNotifier {
-  List<Post> _postsList = []; // state
+  final service = di<PostsService>();
+
+  //state
+  List<Post> _postsList = [];
   bool _isLoading = true;
   String _error = "";
-  int _postId = 0;
+  Post _post = Post();
 
-  int get postId => _postId;
+  //getters for state
+  Post get post => _post;
   String get error => _error;
   List<Post> get posts =>
       _postsList; //each state should have a getter to use outside class
 
   bool get isLoading => _isLoading;
-  PostsRest service = PostsRest();
 
+  //events
   void getAllPosts() async {
     _postsList = await service.fetchStores().catchError((err) => _error = err);
     _isLoading = false;
@@ -25,15 +31,14 @@ class PostViewModel extends ChangeNotifier {
 
   void addPost(Post post) async {
     _isLoading = true;
-    final newPost = await service.createPost(post);
+    await service.createPost(post).then((value) => print("creted new post"));
 
-    _postsList.add(newPost);
     _isLoading = false;
     notifyListeners();
   }
 
-  void setPostID(int index) {
-    _postId = index;
+  void setPost(Post post) {
+    _post = post;
     notifyListeners();
   }
 }

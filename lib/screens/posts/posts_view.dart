@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
 import 'package:flutter_jsonplaceholder/screens/posts/posts_viewModel.dart';
 import 'package:flutter_jsonplaceholder/screens/posts/single_Post_view.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,58 +8,46 @@ import 'package:stacked/stacked.dart';
 
 import '../../models/Post.dart';
 
-class PostsPage extends StatelessWidget {
+class PostsPage extends ViewModelWidget<PostViewModel> {
   PostsPage({Key? key}) : super(key: key);
 
-  final PostViewModel viewModel = PostViewModel();
   @override
-  Widget build(BuildContext context) {
-    return ViewModelBuilder<PostViewModel>.reactive(
-        viewModelBuilder: () => viewModel,
-        onModelReady: (model) => model.getAllPosts(),
-        builder: (context, model, _) {
-          if (model.isLoading == true) {
-            return Center(
-              child: CircularProgressIndicator(
-                color: Theme.of(context).primaryColor,
-              ),
-            );
-          }
-          if (model.error.isNotEmpty) {
-            return Center(
-              child: Text(model.error),
-            );
-          }
-          return Scaffold(
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Post newPost = Post(
-                    id: model.posts.length + 1,
-                    title: "new Post",
-                    userId: 1,
-                    body: "new Post Body");
+  Widget build(BuildContext context, PostViewModel viewModel) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Post newPost = Post(
+              id: viewModel.posts.length + 1,
+              title: "new Post",
+              userId: 1,
+              body: "new Post Body");
 
-                model.addPost(newPost);
-              },
-              child: Icon(Icons.add),
-            ),
-            backgroundColor: Theme.of(context).backgroundColor,
-            appBar: AppBar(
-              backgroundColor: Theme.of(context).backgroundColor,
-              elevation: 0,
-              title: const Center(child: Text("Posts")),
-            ),
-            body: ListView.builder(
-              itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PostCard(
-                  index: index,
-                ),
-              ),
-              itemCount: model.posts.length,
-            ),
-          );
-        });
+          viewModel.addPost(newPost);
+          viewModel.posts.add(newPost);
+        },
+        child: Icon(Icons.add),
+      ),
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).backgroundColor,
+        elevation: 0,
+        title: Center(
+            child: Text(
+          "Posts",
+          style: GoogleFonts.poppins(
+              color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
+        )),
+      ),
+      body: ListView.builder(
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: PostCard(
+            index: index,
+          ),
+        ),
+        itemCount: viewModel.posts.length,
+      ),
+    );
   }
 }
 
@@ -69,15 +58,11 @@ class PostCard extends ViewModelWidget<PostViewModel> {
   @override
   Widget build(BuildContext context, PostViewModel viewModel) {
     return InkWell(
+      focusColor: Colors.amber,
+      highlightColor: Colors.amber,
       onTap: () {
-        viewModel.setPostID(index + 1);
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ViewModelBuilder<PostViewModel>.nonReactive(
-                  viewModelBuilder: () => viewModel,
-                  builder: (context, viewModel, _) => const SinglePostPage()),
-            ));
+        viewModel.setPost(viewModel.posts[index]);
+        Navigator.pushNamed(context, singlePostPage);
       },
       child: Card(
           elevation: 3,

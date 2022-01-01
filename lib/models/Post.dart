@@ -1,10 +1,10 @@
 // ignore: file_names
 class Post {
   Post({
-    required this.userId,
-    required this.id,
-    required this.title,
-    required this.body,
+    this.userId = 0,
+    this.id = 0,
+    this.title = "",
+    this.body = "",
   });
 
   int userId;
