@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_jsonplaceholder/services/posts_service/posts_rest.dart';
+
 import 'package:flutter_jsonplaceholder/services/posts_service/posts_service.dart';
 
 import '../../app/di/dependency.dart';

@@ -29,7 +29,7 @@ class AppRouter {
                       child: Text(model.error),
                     );
                   }
-                  return PostsPage();
+                  return const PostsPage();
                 }));
 
       case singlePostPage:
