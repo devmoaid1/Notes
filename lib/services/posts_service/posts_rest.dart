@@ -18,4 +18,9 @@ class PostsRest implements PostsService {
     final newPost = await rest.post("posts", data: post);
     return Post.fromJson(newPost);
   }
+
+  @override
+  Future deletePost(int id) async {
+    await rest.delete("posts/$id");
+  }
 }

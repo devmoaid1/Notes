@@ -37,6 +37,11 @@ class PostViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void deletePost(int id) async {
+    await service.deletePost(id);
+    notifyListeners();
+  }
+
   void setPost(Post post) {
     _post = post;
     notifyListeners();

@@ -14,6 +14,49 @@ class PostCard extends ViewModelWidget<PostViewModel> {
     return InkWell(
       focusColor: Colors.amber,
       highlightColor: Colors.amber,
+      onLongPress: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                elevation: 3,
+                backgroundColor: const Color.fromARGB(255, 36, 36, 36),
+                title: Text("Are you sure you want to delete Post ?"),
+                titleTextStyle: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700),
+                actions: [
+                  GestureDetector(
+                      onTap: () {
+                        viewModel.deletePost(viewModel.post.id);
+                        viewModel.posts.removeAt(index);
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                        "Yes",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      )),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                        "No",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      )),
+                ],
+              );
+            });
+      },
       onTap: () {
         viewModel.setPost(viewModel.posts[index]);
         Navigator.pushNamed(context, singlePostPage);

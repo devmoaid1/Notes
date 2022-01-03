@@ -88,10 +88,12 @@ createAddPostDialog(BuildContext context, PostViewModel viewModel) {
                       title: postTitle,
                       body: postContent);
 
-                  viewModel.addPost(newPost);
-                  //adding post to server or database
-                  viewModel.posts
-                      .add(newPost); // adding post to the list itself
+                  if (postTitle.isNotEmpty && postContent.isNotEmpty) {
+                    viewModel.addPost(newPost);
+                    //adding post to server or database
+                    viewModel.posts
+                        .add(newPost); // adding post to the list itself
+                  }
 
                   Navigator.of(context).pop();
                 },
