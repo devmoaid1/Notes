@@ -42,6 +42,17 @@ class PostViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updatePost(int id, Post updatedPost) async {
+    _isLoading = true;
+    await service
+        .editPost(id, updatedPost)
+        .then((value) => print('post edited sucessfully'))
+        .catchError((err) => _error = err);
+
+    _isLoading = false;
+    notifyListeners();
+  }
+
   void setPost(Post post) {
     _post = post;
     notifyListeners();

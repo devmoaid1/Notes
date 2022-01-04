@@ -98,10 +98,10 @@ class SinglePostPage extends ViewModelWidget<PostViewModel> {
                     Container(
                       margin: EdgeInsets.only(left: 10),
                       constraints: BoxConstraints(
-                          maxWidth: MediaQuery.of(context).size.width * 0.7),
+                          maxWidth: MediaQuery.of(context).size.width * 0.8),
                       child: Text(
-                        "Agile Methedology is one of the most imponrtant methedology so it aims to reduce risks and projects faliure due to its iterative process ${viewModel.post.body}",
-                        maxLines: 3,
+                        "this is one of the best  ${viewModel.post.body}",
+                        maxLines: 20,
                         style: GoogleFonts.poppins(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

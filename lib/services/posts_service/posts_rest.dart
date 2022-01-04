@@ -23,4 +23,10 @@ class PostsRest implements PostsService {
   Future deletePost(int id) async {
     await rest.delete("posts/$id");
   }
+
+  @override
+  Future<Post> editPost(int id, Post uPost) async {
+    final editedPost = await rest.patch('posts/$id', data: uPost);
+    return Post.fromJson(editedPost);
+  }
 }

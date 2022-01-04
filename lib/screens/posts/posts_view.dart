@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
 
 import 'package:flutter_jsonplaceholder/screens/posts/posts_viewModel.dart';
 
@@ -6,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:stacked/stacked.dart';
 
-import 'widgets/add_post_dialog.dart';
+import 'widgets/add_post.dart';
 import 'widgets/post_card.dart';
 
 class PostsPage extends ViewModelWidget<PostViewModel> {
@@ -27,7 +28,8 @@ class PostsPage extends ViewModelWidget<PostViewModel> {
                 padding: const EdgeInsets.all(10.0),
                 child: InkWell(
                   onTap: () {
-                    createAddPostDialog(context, viewModel);
+                    // createAddPostDialog(context, viewModel);
+                    Navigator.pushNamed(context, addPostPage);
                   },
                   child: Container(
                     height: 100,

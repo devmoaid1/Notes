@@ -4,6 +4,8 @@ import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
 import 'package:flutter_jsonplaceholder/screens/posts/posts_view.dart';
 import 'package:flutter_jsonplaceholder/screens/posts/posts_viewModel.dart';
 import 'package:flutter_jsonplaceholder/screens/posts/single_Post_view.dart';
+import 'package:flutter_jsonplaceholder/screens/posts/widgets/add_post.dart';
+import 'package:flutter_jsonplaceholder/screens/posts/widgets/edit_post.dart';
 import 'package:stacked/stacked.dart';
 
 class AppRouter {
@@ -38,6 +40,20 @@ class AppRouter {
                 disposeViewModel: false,
                 viewModelBuilder: () => postViewModel,
                 builder: (context, viewModel, _) => const SinglePostPage()));
+
+      case addPostPage:
+        return MaterialPageRoute(
+            builder: (context) => ViewModelBuilder<PostViewModel>.nonReactive(
+                disposeViewModel: false,
+                viewModelBuilder: () => postViewModel,
+                builder: (context, viewModel, _) => AddPostPage()));
+
+      case editPostPage:
+        return MaterialPageRoute(
+            builder: (context) => ViewModelBuilder<PostViewModel>.nonReactive(
+                disposeViewModel: false,
+                viewModelBuilder: () => postViewModel,
+                builder: (context, viewModel, _) => EditPostPage()));
 
       default:
         return MaterialPageRoute(builder: (context) => PostsPage());

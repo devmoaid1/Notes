@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-          primaryColor: const Color.fromARGB(255, 250, 35, 71),
+          primaryColor: Color.fromARGB(249, 207, 33, 77),
           backgroundColor: const Color.fromARGB(255, 0, 0, 0),
           primarySwatch: Colors.blue,
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
