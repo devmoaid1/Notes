@@ -70,17 +70,6 @@ class EditPostPage extends ViewModelWidget<PostViewModel> {
                       title: newTitle,
                       id: currentPost.id,
                       userId: 1);
-
-                  // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  //     elevation: 2,
-                  //     backgroundColor: Theme.of(context).primaryColor,
-                  //     content: Text(
-                  //       "Updated  Post",
-                  //       style: GoogleFonts.poppins(
-                  //           color: Colors.white,
-                  //           fontSize: 14,
-                  //           fontWeight: FontWeight.w700),
-                  //     )));
                 }
               }
               Navigator.pop(context);
@@ -93,7 +82,7 @@ class EditPostPage extends ViewModelWidget<PostViewModel> {
           elevation: 0,
           backgroundColor: Theme.of(context).backgroundColor,
           title: Text(
-            "New Post",
+            "Edit Post",
             style: GoogleFonts.poppins(
                 color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
           )),
