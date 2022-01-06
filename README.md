@@ -8,7 +8,7 @@ A flutter blog app built with stacked Mvvm architecture.
  
 <h2> Add Post form </h2>
  
-<img src="flutter_blogApp/blob/master/screenshots/add_post%201.png"></img>
+<img src="https://github.com/devmoaid1/flutter_blogApp/blob/master/screenshots/add_post%201.png?raw=true"></img>
   
 <h2> Add Post with content </h2>
  
