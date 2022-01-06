@@ -33,9 +33,9 @@ class PostsPage extends ViewModelWidget<PostViewModel> {
                   },
                   child: Container(
                     height: 100,
-                    padding: const EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(20),
                         color: const Color.fromARGB(255, 36, 36, 36)),
                     margin: const EdgeInsets.only(right: 10),
                     child: Row(
@@ -59,7 +59,7 @@ class PostsPage extends ViewModelWidget<PostViewModel> {
             ],
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text("List of Posts",
+              title: Text("Posts",
                   style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,

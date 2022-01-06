@@ -88,13 +88,13 @@ class PostCard extends ViewModelWidget<PostViewModel> {
                               margin: const EdgeInsets.only(right: 5),
                               child: const Icon(
                                 Icons.account_circle,
-                                color: Color.fromARGB(235, 216, 21, 69),
+                                color: Color.fromARGB(255, 224, 52, 95),
                               ),
                             ),
                             Text(
                               viewModel.posts[index].id.toString(),
                               style: GoogleFonts.poppins(
-                                  color: const Color.fromARGB(235, 240, 35, 86),
+                                  color: const Color.fromARGB(255, 224, 52, 95),
                                   fontSize: 14),
                             )
                           ],
