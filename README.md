@@ -6,11 +6,10 @@ A flutter blog app built with stacked Mvvm architecture.
  
 <img src="screenshots/Home%20Page.png"></img>
  
-<h2> Add Post form </h2>
-<img src="screenshots/add_post_form.png"></img>
 
-<h2> Add Post with content </h2>
-<img src="screenshots/add_post_with_content.png"></img>
+![image](https://user-images.githubusercontent.com/68110578/148684451-167b12c1-07c7-45b8-991b-c7babb8fa17a.png)
+
+![image](https://user-images.githubusercontent.com/68110578/148684464-8597e313-d587-46bc-8232-a77acf47ab9a.png)
    
 <h2> Alert of create Post </h2>
  
