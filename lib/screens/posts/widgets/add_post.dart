@@ -1,31 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jsonplaceholder/app/di/dependency.dart';
+import 'package:flutter_jsonplaceholder/screens/posts/posts_viewModel.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
 
-import '../../../models/Post.dart';
-import '../posts_viewModel.dart';
+import '../../../models/note.dart';
 
-class AddPostPage extends ViewModelWidget<PostViewModel> {
-  AddPostPage({Key? key}) : super(key: key);
+class AddNoteView extends StatefulWidget {
+  const AddNoteView({super.key});
+
+  @override
+  State<AddNoteView> createState() => _AddNoteViewState();
+}
+
+class _AddNoteViewState extends State<AddNoteView> {
   String title = "";
   String body = "";
   TextEditingController titleController = TextEditingController();
   TextEditingController bodyController = TextEditingController();
   @override
-  Widget build(BuildContext context, PostViewModel viewModel) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
           leading: GestureDetector(
             onTap: () {
-              Post newPost = Post(
-                  body: body,
-                  title: title,
-                  userId: 1,
-                  id: viewModel.posts.length + 1);
+              Note newPost = Note(
+                body: body,
+                title: title,
+                userId: 1,
+              );
               if (title.isNotEmpty && body.isNotEmpty) {
-                viewModel.addPost(newPost);
-                viewModel.posts.add(newPost);
+                di<PostViewModel>().addPost(newPost);
+                di<PostViewModel>().notes.add(newPost);
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     elevation: 2,
                     backgroundColor: Theme.of(context).primaryColor,
@@ -38,7 +44,7 @@ class AddPostPage extends ViewModelWidget<PostViewModel> {
                     )));
               }
               Navigator.pop(context);
-              viewModel.getAllPosts();
+              di<PostViewModel>().getAllPosts();
             },
             child: Icon(
               Icons.arrow_back,
@@ -46,7 +52,7 @@ class AddPostPage extends ViewModelWidget<PostViewModel> {
             ),
           ),
           elevation: 0,
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: Theme.of(context).colorScheme.background,
           title: Text(
             "New Post",
             style: GoogleFonts.poppins(
@@ -57,7 +63,7 @@ class AddPostPage extends ViewModelWidget<PostViewModel> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: TextField(
                   onChanged: (value) {
@@ -83,7 +89,7 @@ class AddPostPage extends ViewModelWidget<PostViewModel> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 child: TextField(
@@ -97,7 +103,7 @@ class AddPostPage extends ViewModelWidget<PostViewModel> {
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w700),
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     enabledBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
@@ -111,6 +117,9 @@ class AddPostPage extends ViewModelWidget<PostViewModel> {
     );
   }
 }
+
+
+
 
 // createAddPostDialog(BuildContext context, PostViewModel viewModel) {
 //   return showDialog(

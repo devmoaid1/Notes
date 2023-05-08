@@ -4,19 +4,25 @@ import 'package:flutter_jsonplaceholder/screens/posts/posts_viewModel.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
-class SinglePostPage extends ViewModelWidget<PostViewModel> {
-  const SinglePostPage({Key? key}) : super(key: key);
+import '../../models/note.dart';
+
+class NoteView extends ViewModelWidget<PostViewModel> {
+  final Note note;
+  const NoteView({
+    required this.note,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, PostViewModel viewModel) {
     return Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: Theme.of(context).colorScheme.background,
           elevation: 0,
           title: Center(
             child: Text(
-              "Post Number ${viewModel.post.id}",
+              "Post Number 1",
               style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
@@ -26,8 +32,8 @@ class SinglePostPage extends ViewModelWidget<PostViewModel> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            margin: EdgeInsets.only(top: 50),
-            padding: EdgeInsets.all(10),
+            margin: const EdgeInsets.only(top: 50),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 Row(
@@ -38,11 +44,11 @@ class SinglePostPage extends ViewModelWidget<PostViewModel> {
                       size: 30,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: const EdgeInsets.only(left: 10),
                       constraints: BoxConstraints(
                           maxWidth: MediaQuery.of(context).size.width * 0.6),
                       child: Text(
-                        "${viewModel.post.title}",
+                        note.title,
                         maxLines: 1,
                         style: GoogleFonts.poppins(
                             fontSize: 18,
@@ -53,7 +59,7 @@ class SinglePostPage extends ViewModelWidget<PostViewModel> {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 10),
+                  margin: const EdgeInsets.only(top: 10, bottom: 10),
                   child: Divider(
                     thickness: 1,
                     color: Colors.grey[400],
@@ -68,7 +74,7 @@ class SinglePostPage extends ViewModelWidget<PostViewModel> {
                       size: 30,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: const EdgeInsets.only(left: 10),
                       constraints: BoxConstraints(
                           maxWidth: MediaQuery.of(context).size.width * 0.6),
                       child: Text(
@@ -83,8 +89,8 @@ class SinglePostPage extends ViewModelWidget<PostViewModel> {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 10),
-                  child: Divider(
+                  margin: const EdgeInsets.only(top: 10, bottom: 10),
+                  child: const Divider(
                     thickness: 1,
                     color: Colors.grey,
                     indent: 40,
@@ -96,11 +102,11 @@ class SinglePostPage extends ViewModelWidget<PostViewModel> {
                       width: 30,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: const EdgeInsets.only(left: 10),
                       constraints: BoxConstraints(
                           maxWidth: MediaQuery.of(context).size.width * 0.8),
                       child: Text(
-                        "this is one of the best  ${viewModel.post.body}",
+                        "this is one of the best  ",
                         maxLines: 20,
                         style: GoogleFonts.poppins(
                             fontSize: 16,

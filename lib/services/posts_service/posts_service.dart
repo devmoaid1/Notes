@@ -1,8 +1,8 @@
-import '../../models/Post.dart';
+import '../../models/note.dart';
 
 abstract class PostsService {
-  Future<List<Post>> fetchStores();
-  Future<Post> createPost(Post post);
-  Future deletePost(int id);
-  Future<Post> editPost(int id, Post uPost);
+  Future<List<Note>> fetchStores();
+  Future<void> createPost(Note note);
+  Future<void> deletePost(int id);
+  Future<void> editPost(int id, Note note);
 }

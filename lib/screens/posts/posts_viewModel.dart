@@ -3,58 +3,52 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_jsonplaceholder/services/posts_service/posts_service.dart';
 
 import '../../app/di/dependency.dart';
-import '../../models/Post.dart';
+import '../../models/note.dart';
 
 class PostViewModel extends ChangeNotifier {
   final service = di<PostsService>();
 
   //state
-  List<Post> _postsList = [];
+  List<Note> _notes = [];
   bool _isLoading = true;
   String _error = "";
-  Post _post = Post();
 
   //getters for state
-  Post get post => _post;
+
   String get error => _error;
-  List<Post> get posts =>
-      _postsList; //each state should have a getter to use outside class
+  List<Note> get notes =>
+      _notes; //each state should have a getter to use outside class
 
   bool get isLoading => _isLoading;
 
   //events
   void getAllPosts() async {
-    _postsList = await service.fetchStores().catchError((err) => _error = err);
+    _notes = await service.fetchStores().catchError((err) => _error = err);
     _isLoading = false;
     notifyListeners();
   }
 
-  void addPost(Post post) async {
+  void addPost(Note note) async {
     _isLoading = true;
-    await service.createPost(post).then((value) => print("creted new post"));
+    await service.createPost(note).then((value) => print("creted new note"));
 
     _isLoading = false;
     notifyListeners();
   }
 
-  void deletePost(int id) async {
+  void deleteNote(int id) async {
     await service.deletePost(id);
     notifyListeners();
   }
 
-  void updatePost(int id, Post updatedPost) async {
+  void updateNote(int id, Note note) async {
     _isLoading = true;
     await service
-        .editPost(id, updatedPost)
+        .editPost(id, note)
         .then((value) => print('post edited sucessfully'))
         .catchError((err) => _error = err);
 
     _isLoading = false;
-    notifyListeners();
-  }
-
-  void setPost(Post post) {
-    _post = post;
     notifyListeners();
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
 
 import 'package:flutter_jsonplaceholder/screens/posts/posts_viewModel.dart';
 
@@ -9,8 +8,8 @@ import 'package:stacked/stacked.dart';
 
 import 'widgets/post_card.dart';
 
-class PostsPage extends ViewModelWidget<PostViewModel> {
-  const PostsPage({Key? key}) : super(key: key);
+class HomeView extends ViewModelWidget<PostViewModel> {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, PostViewModel viewModel) {
@@ -28,7 +27,7 @@ class PostsPage extends ViewModelWidget<PostViewModel> {
                 child: InkWell(
                   onTap: () {
                     // createAddPostDialog(context, viewModel);
-                    Navigator.pushNamed(context, addPostPage);
+                    // Navigator.pushNamed(context, addPostPage);
                   },
                   child: Container(
                     height: 100,
@@ -70,9 +69,11 @@ class PostsPage extends ViewModelWidget<PostViewModel> {
             delegate: SliverChildBuilderDelegate((context, index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: PostCard(index: index),
+                child: PostCard(
+                  note: viewModel.notes[index],
+                ),
               );
-            }, childCount: viewModel.posts.length),
+            }, childCount: viewModel.notes.length),
           )
         ],
       ),
