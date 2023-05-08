@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:stacked/stacked.dart';
 
-import 'widgets/add_post.dart';
 import 'widgets/post_card.dart';
 
 class PostsPage extends ViewModelWidget<PostViewModel> {
@@ -16,7 +15,7 @@ class PostsPage extends ViewModelWidget<PostViewModel> {
   @override
   Widget build(BuildContext context, PostViewModel viewModel) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(

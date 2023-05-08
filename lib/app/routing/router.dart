@@ -17,7 +17,7 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (context) => ViewModelBuilder<PostViewModel>.reactive(
                 viewModelBuilder: () => postViewModel,
-                onModelReady: (model) => model.getAllPosts(),
+                onViewModelReady: (viewModel) => viewModel.getAllPosts(),
                 builder: (context, model, _) {
                   if (model.isLoading == true) {
                     return Center(
@@ -56,7 +56,7 @@ class AppRouter {
                 builder: (context, viewModel, _) => EditPostPage()));
 
       default:
-        return MaterialPageRoute(builder: (context) => PostsPage());
+        return MaterialPageRoute(builder: (context) => const PostsPage());
     }
   }
 }

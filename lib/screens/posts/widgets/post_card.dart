@@ -26,9 +26,9 @@ class PostCard extends ViewModelWidget<PostViewModel> {
         key: ObjectKey(viewModel.posts[index]),
         background: Container(
           alignment: Alignment.centerRight,
-          padding: EdgeInsets.only(right: 20.0),
+          padding: const EdgeInsets.only(right: 20.0),
           color: Colors.red,
-          child: Icon(
+          child: const Icon(
             Icons.delete,
             color: Colors.white,
           ),
@@ -53,7 +53,7 @@ class PostCard extends ViewModelWidget<PostViewModel> {
         },
         child: Card(
             elevation: 3,
-            color: Theme.of(context).backgroundColor,
+            color: Theme.of(context).colorScheme.background,
             margin: const EdgeInsets.only(bottom: 4),
             child: Container(
               height: 100,
