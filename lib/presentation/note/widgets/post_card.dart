@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../models/note.dart';
+import '../../../data/models/note.dart';
 import '../posts_viewModel.dart';
 
 class PostCard extends ViewModelWidget<PostViewModel> {

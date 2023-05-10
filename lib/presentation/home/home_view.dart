@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_jsonplaceholder/screens/posts/posts_viewModel.dart';
+import 'package:flutter_jsonplaceholder/presentation/note/posts_viewModel.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:stacked/stacked.dart';
 
-import 'widgets/post_card.dart';
+import '../note/widgets/post_card.dart';
 
 class HomeView extends ViewModelWidget<PostViewModel> {
   const HomeView({Key? key}) : super(key: key);

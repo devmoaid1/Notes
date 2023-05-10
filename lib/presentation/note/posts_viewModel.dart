@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-import 'package:flutter_jsonplaceholder/services/posts_service/posts_service.dart';
+import 'package:flutter_jsonplaceholder/data/services/posts_service/posts_service.dart';
 
 import '../../app/di/dependency.dart';
-import '../../models/note.dart';
+import '../../data/models/note.dart';
 
 class PostViewModel extends ChangeNotifier {
   final service = di<PostsService>();
