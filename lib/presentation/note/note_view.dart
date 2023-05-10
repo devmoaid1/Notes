@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_jsonplaceholder/screens/posts/posts_viewModel.dart';
+import 'package:flutter_jsonplaceholder/presentation/note/posts_viewModel.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../models/note.dart';
+import '../../data/models/note.dart';
 
 class NoteView extends ViewModelWidget<PostViewModel> {
   final Note note;

@@ -1,4 +1,4 @@
-import 'package:flutter_jsonplaceholder/screens/posts/posts_viewModel.dart';
+import 'package:flutter_jsonplaceholder/presentation/note/posts_viewModel.dart';
 
 import 'package:get_it/get_it.dart';
 

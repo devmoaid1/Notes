@@ -4,5 +4,6 @@ import 'package:flutter_jsonplaceholder/app/di/dependency.dart' as di;
 
 void main() {
   di.init();
+
   runApp(const NotesApp());
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jsonplaceholder/models/note.dart';
+import 'package:flutter_jsonplaceholder/data/models/note.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditNoteView extends StatefulWidget {
