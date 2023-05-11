@@ -48,7 +48,7 @@ class NoteView extends ViewModelWidget<PostViewModel> {
                       constraints: BoxConstraints(
                           maxWidth: MediaQuery.of(context).size.width * 0.6),
                       child: Text(
-                        note.title,
+                        note.title!,
                         maxLines: 1,
                         style: GoogleFonts.poppins(
                             fontSize: 18,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jsonplaceholder/app/constants/app_assets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
@@ -25,14 +27,10 @@ class PostCard extends ViewModelWidget<PostViewModel> {
       child: Dismissible(
         key: UniqueKey(),
         background: Container(
-          alignment: Alignment.centerRight,
-          padding: const EdgeInsets.only(right: 20.0),
-          color: Colors.red,
-          child: const Icon(
-            Icons.delete,
-            color: Colors.white,
-          ),
-        ),
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.only(right: 20.0),
+            color: Colors.red,
+            child: SvgPicture.asset(AppAssets.deleteIcon)),
         onDismissed: (direction) {
           // final currentPost = viewModel.posts[index];
           // viewModel.deletePost(currentPost.id);
@@ -74,7 +72,7 @@ class PostCard extends ViewModelWidget<PostViewModel> {
                               maxWidth:
                                   MediaQuery.of(context).size.width * 0.5),
                           margin: const EdgeInsets.only(bottom: 8),
-                          child: Text(note.title,
+                          child: Text(note.title!,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.poppins(
@@ -105,7 +103,7 @@ class PostCard extends ViewModelWidget<PostViewModel> {
                       constraints: BoxConstraints(
                         maxWidth: MediaQuery.of(context).size.width * 0.8,
                       ),
-                      child: Text(note.body,
+                      child: Text(note.body!,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.poppins(
