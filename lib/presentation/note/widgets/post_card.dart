@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_jsonplaceholder/app/constants/app_assets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
 
 import '../../../data/models/note.dart';
-import '../posts_viewModel.dart';
 
-class PostCard extends ViewModelWidget<PostViewModel> {
+class PostCard extends StatelessWidget {
   final Note note;
   const PostCard({Key? key, required this.note}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, PostViewModel viewModel) {
+  Widget build(BuildContext context) {
     return InkWell(
       focusColor: Theme.of(context).primaryColor,
       highlightColor: Theme.of(context).primaryColor,

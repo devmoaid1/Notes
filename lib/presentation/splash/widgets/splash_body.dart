@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jsonplaceholder/app/constants/app_assets.dart';
+import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
 import 'package:flutter_jsonplaceholder/app/utils/extensions/app_context.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../app/utils/extensions/spaces.dart';
 
@@ -32,6 +34,11 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
     );
 
     _animationController.forward();
+
+    Future.delayed(
+      const Duration(seconds: 2),
+      () => context.go(homeRoute),
+    );
   }
 
   @override

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jsonplaceholder/app/di/dependency.dart';
-import 'package:flutter_jsonplaceholder/presentation/note/posts_viewModel.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../../../data/models/note.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AddNoteView extends StatefulWidget {
   const AddNoteView({super.key});
@@ -24,27 +21,27 @@ class _AddNoteViewState extends State<AddNoteView> {
       appBar: AppBar(
           leading: GestureDetector(
             onTap: () {
-              Note newPost = Note(
-                body: body,
-                title: title,
-                userId: 1,
-              );
-              if (title.isNotEmpty && body.isNotEmpty) {
-                di<PostViewModel>().addPost(newPost);
-                di<PostViewModel>().notes.add(newPost);
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    elevation: 2,
-                    backgroundColor: Theme.of(context).primaryColor,
-                    content: Text(
-                      "Created New Post",
-                      style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700),
-                    )));
-              }
-              Navigator.pop(context);
-              di<PostViewModel>().getAllPosts();
+              // Note newPost = Note(
+              //   body: body,
+              //   title: title,
+              //   userId: 1,
+              // );
+              // if (title.isNotEmpty && body.isNotEmpty) {
+              //   di<PostViewModel>().addPost(newPost);
+              //   di<PostViewModel>().notes.add(newPost);
+              //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              //       elevation: 2,
+              //       backgroundColor: Theme.of(context).primaryColor,
+              //       content: Text(
+              //         "Created New Post",
+              //         style: GoogleFonts.poppins(
+              //             color: Colors.white,
+              //             fontSize: 14,
+              //             fontWeight: FontWeight.w700),
+              //       )));
+              // }
+              // Navigator.pop(context);
+              // di<PostViewModel>().getAllPosts();
             },
             child: Icon(
               Icons.arrow_back,

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_jsonplaceholder/presentation/note/posts_viewModel.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:stacked/stacked.dart';
 
 import '../../data/models/note.dart';
 
-class NoteView extends ViewModelWidget<PostViewModel> {
+class NoteView extends StatelessWidget {
   final Note note;
   const NoteView({
     required this.note,
@@ -14,7 +12,7 @@ class NoteView extends ViewModelWidget<PostViewModel> {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, PostViewModel viewModel) {
+  Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
