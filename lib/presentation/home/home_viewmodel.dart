@@ -10,30 +10,31 @@ class HomeViewmodel extends BaseViewModel {
 
   List<Note> _notes = List.empty(growable: true);
 
-  String _error = '';
+  // final String _error = '';
 
-  String get errorMessage => _error;
+  // String get errorMessage => _error;
 
   List<Note> get notes => _notes;
 
-  void getAllPosts() async {
+  void getAllNotes() async {
     setBusy(true);
+
     final response = await notesService.fetchNotes();
 
     response.fold(
-      (failure) => _error = failure.message,
+      (failure) => setError(failure.message),
       (notes) => _notes = notes,
     );
     setBusy(false);
     // notifyListeners();
   }
 
-  void addPost(Note note) async {
+  void addNote(Note note) async {
     setBusy(true);
     _notes.add(note);
     final response = await notesService.createNote(note);
     response.fold(
-      (failure) => _error = failure.message,
+      (failure) => setError(failure.message),
       (success) {},
     );
 
@@ -44,7 +45,7 @@ class HomeViewmodel extends BaseViewModel {
     _notes.remove(note);
     final response = await notesService.deleteNote(note);
     response.fold(
-      (failure) => _error = failure.message,
+      (failure) => setError(failure.message),
       (success) {},
     );
     notifyListeners();

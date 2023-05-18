@@ -9,7 +9,8 @@ import '../localstorage/hive_consumer.dart';
 final di = GetIt.instance;
 
 void init() {
-  di.registerLazySingleton<LocalStorageProvider>(() => HiveStorageService());
+  di.registerLazySingleton<HiveStorageProvider>(() => HiveStorageService());
+
   di.registerLazySingleton<NotesService>(
       () => NotesServiceImpl(localStorageProvider: di()));
 
