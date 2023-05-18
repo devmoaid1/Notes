@@ -3,10 +3,10 @@ import 'package:flutter_jsonplaceholder/app/constants/app_assets.dart';
 import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
 import 'package:flutter_jsonplaceholder/app/utils/extensions/app_context.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/utils/extensions/spaces.dart';
+import '../../../app/widgets/custom_svg_visual.dart';
 
 class SplashBody extends StatefulWidget {
   const SplashBody({super.key});
@@ -37,7 +37,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
 
     Future.delayed(
       const Duration(seconds: 2),
-      () => context.go(homeRoute),
+      () => context.pushReplacement(homeRoute),
     );
   }
 
@@ -55,13 +55,12 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SlideTransition(
-              position: _animation,
-              child: SvgPicture.asset(
-                AppAssets.logo,
-                width: 280.w,
-                fit: BoxFit.fill,
-              ),
-            ),
+                position: _animation,
+                child: CustomSvgVisual(
+                  iconPath: AppAssets.logo,
+                  width: 280.w,
+                  boxFit: BoxFit.fill,
+                )),
             20.vSpace,
             SlideTransition(
               position: _animation,

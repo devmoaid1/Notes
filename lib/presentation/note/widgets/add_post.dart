@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,7 +41,7 @@ class _AddNoteViewState extends State<AddNoteView> {
               //             fontWeight: FontWeight.w700),
               //       )));
               // }
-              // Navigator.pop(context);
+              GoRouter.of(context).pop();
               // di<PostViewModel>().getAllPosts();
             },
             child: Icon(

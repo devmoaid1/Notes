@@ -13,6 +13,9 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
         bodyMedium: Styles.kbodyMediumTextStyle,
         bodySmall: Styles.kbodysmallTextStyle,
         headlineLarge: Styles.kHeadingTextStyle),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+        circularTrackColor: AppDarkColors.kPrimaryColor,
+        color: AppDarkColors.kPrimaryColor.withOpacity(0.6)),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: AppDarkColors.kPrimaryColor,
         elevation: 1,
