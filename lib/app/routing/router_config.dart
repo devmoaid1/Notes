@@ -2,7 +2,7 @@ import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
 import 'package:flutter_jsonplaceholder/data/models/note.dart';
 import 'package:flutter_jsonplaceholder/presentation/home/home_view.dart';
 import 'package:flutter_jsonplaceholder/presentation/note/note_view.dart';
-import 'package:flutter_jsonplaceholder/presentation/note/widgets/add_post.dart';
+import 'package:flutter_jsonplaceholder/presentation/note/widgets/add_note.dart';
 import 'package:flutter_jsonplaceholder/presentation/note/widgets/edit_post.dart';
 import 'package:flutter_jsonplaceholder/presentation/splash/splash_view.dart';
 import 'package:go_router/go_router.dart';

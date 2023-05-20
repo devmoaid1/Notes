@@ -14,6 +14,21 @@ class Note extends Equatable {
   final String? body;
   final DateTime? createdAt;
 
+  Note copyWith({
+    int? userId,
+    int? id,
+    String? title,
+    String? body,
+    DateTime? createdAt,
+  }) =>
+      Note(
+        userId: userId ?? this.userId,
+        id: id ?? this.id,
+        title: title ?? this.title,
+        body: body ?? this.body,
+        createdAt: createdAt ?? this.createdAt,
+      );
+
   @override
   List<Object?> get props => [userId, id, title, body, createdAt];
 }

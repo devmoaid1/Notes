@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
+import 'package:flutter_jsonplaceholder/app/widgets/keyboard_dissmisble.dart';
 import 'package:go_router/go_router.dart';
 
 import 'widgets/home_body.dart';
@@ -9,15 +10,17 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-            size: 30,
+    return KeyboardDissmisable(
+      child: Scaffold(
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 30,
+            ),
+            onPressed: () => context.push(addNoteRoute),
           ),
-          onPressed: () => context.push(addNoteRoute),
-        ),
-        body: const HomeBody());
+          body: const HomeBody()),
+    );
   }
 }

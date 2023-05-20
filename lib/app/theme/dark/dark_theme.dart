@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/text_styles.dart';
 
 final ThemeData darkTheme = ThemeData.dark().copyWith(
+    useMaterial3: true,
     scaffoldBackgroundColor: Colors.black,
     primaryColor: AppDarkColors.kPrimaryColor,
     hintColor: AppDarkColors.khintColor,

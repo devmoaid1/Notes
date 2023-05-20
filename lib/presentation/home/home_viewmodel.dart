@@ -29,18 +29,6 @@ class HomeViewmodel extends BaseViewModel {
     // notifyListeners();
   }
 
-  void addNote(Note note) async {
-    setBusy(true);
-    _notes.add(note);
-    final response = await notesService.createNote(note);
-    response.fold(
-      (failure) => setError(failure.message),
-      (success) {},
-    );
-
-    setBusy(false);
-  }
-
   void deleteNote(Note note) async {
     _notes.remove(note);
     final response = await notesService.deleteNote(note);
