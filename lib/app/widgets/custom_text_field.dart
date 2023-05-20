@@ -18,6 +18,8 @@ class CustomTextField extends StatelessWidget {
   final Icon? prefixIcon;
   final int? maxLines;
   final double? cursorHeight;
+  final FocusNode? focus;
+  final TextInputAction? textInputAction;
 
   const CustomTextField(
       {super.key,
@@ -35,12 +37,16 @@ class CustomTextField extends StatelessWidget {
       this.maxLines,
       this.prefixIcon,
       this.cursorHeight,
-      this.onSubmitted});
+      this.onSubmitted,
+      this.focus,
+      this.textInputAction});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      focusNode: focus,
+      textInputAction: textInputAction,
       keyboardType: keyboardType,
       onChanged: onChanged,
       onSubmitted: onSubmitted,

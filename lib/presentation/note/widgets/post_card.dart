@@ -5,9 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../data/models/note.dart';
 
-class PostCard extends StatelessWidget {
+class NoteCard extends StatelessWidget {
   final Note note;
-  const PostCard({Key? key, required this.note}) : super(key: key);
+  const NoteCard({Key? key, required this.note}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class PostCard extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              note.id.toString(),
+                              '1',
                               style: GoogleFonts.poppins(
                                   color: const Color.fromARGB(255, 224, 52, 95),
                                   fontSize: 14),

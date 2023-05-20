@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jsonplaceholder/app/utils/extensions/app_context.dart';
+import 'package:flutter_jsonplaceholder/app/utils/extensions/spaces.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomHeader extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
-  const CustomAppBar({
+  const CustomHeader({
     super.key,
     required this.title,
     required this.onTap,
@@ -13,8 +14,9 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-        leading: GestureDetector(
+    return Row(
+      children: [
+        GestureDetector(
           onTap: onTap,
           child: const Icon(
             Icons.arrow_back,
@@ -22,11 +24,9 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             size: 30,
           ),
         ),
-        elevation: 0,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        title: Text(title, style: context.appTextTheme.headlineLarge));
+        20.w.hSpace,
+        Text(title, style: context.appTextTheme.headlineLarge!)
+      ],
+    );
   }
-
-  @override
-  Size get preferredSize => Size(double.infinity, 60.h);
 }

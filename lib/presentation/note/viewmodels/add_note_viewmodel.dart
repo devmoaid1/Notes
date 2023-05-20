@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stacked/stacked.dart';
 
@@ -27,8 +28,10 @@ class AddNoteViewModel extends BaseViewModel {
     rebuildUi();
   }
 
-  void addNote(Note note, BuildContext context) async {
-    if (_note.title!.isNotEmpty || _note.body!.isNotEmpty) {
+  void addNote(String title, String body, BuildContext context) async {
+    if (title.isNotEmpty || body.isNotEmpty) {
+      _note =
+          _note.copyWith(title: title, body: body, createdAt: DateTime.now());
       final response = await notesService.createNote(note);
       response.fold(
         (failure) => setError(failure.message),
@@ -36,6 +39,6 @@ class AddNoteViewModel extends BaseViewModel {
       );
     }
 
-    context.pop();
+    context.pushReplacement(homeRoute);
   }
 }

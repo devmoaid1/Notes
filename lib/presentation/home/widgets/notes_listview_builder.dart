@@ -46,9 +46,7 @@ class NotesListViewModelBuilder extends StatelessWidget {
               ),
             );
           } else {
-            return Expanded(
-              child: NotesList(notes: viewModel.notes),
-            );
+            return NotesList(notes: viewModel.notes);
           }
         });
   }

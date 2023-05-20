@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 
+part 'note.g.dart';
+
+@HiveType(typeId: 1)
 class Note extends Equatable {
-  const Note(
-      {this.userId = 0,
-      this.id = 0,
-      this.title = "",
-      this.body = "",
-      this.createdAt});
+  const Note({this.title = "", this.body = "", this.createdAt});
 
-  final int? userId;
-  final int? id;
+  @HiveField(1)
   final String? title;
+  @HiveField(2)
   final String? body;
+  @HiveField(3)
   final DateTime? createdAt;
 
   Note copyWith({
@@ -22,13 +22,11 @@ class Note extends Equatable {
     DateTime? createdAt,
   }) =>
       Note(
-        userId: userId ?? this.userId,
-        id: id ?? this.id,
         title: title ?? this.title,
         body: body ?? this.body,
         createdAt: createdAt ?? this.createdAt,
       );
 
   @override
-  List<Object?> get props => [userId, id, title, body, createdAt];
+  List<Object?> get props => [title, body, createdAt];
 }

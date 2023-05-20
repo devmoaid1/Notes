@@ -12,7 +12,9 @@ class NotesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: notes.length, // Replace with your actual list size
+      itemCount: notes.length,
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true, // Replace with your actual list size
       itemBuilder: (BuildContext context, int index) {
         final note = notes[index];
         return ListTile(
