@@ -9,6 +9,7 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
     scaffoldBackgroundColor: Colors.black,
     primaryColor: AppDarkColors.kPrimaryColor,
     hintColor: AppDarkColors.khintColor,
+    cardColor: AppDarkColors.kCardColor,
     textTheme: TextTheme(
         bodyLarge: Styles.kbodyLargeTextStyle,
         bodyMedium: Styles.kbodyMediumTextStyle,

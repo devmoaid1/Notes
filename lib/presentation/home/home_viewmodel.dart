@@ -26,7 +26,6 @@ class HomeViewmodel extends BaseViewModel {
       (notes) => _notes = notes,
     );
     setBusy(false);
-    // notifyListeners();
   }
 
   void deleteNote(Note note) async {

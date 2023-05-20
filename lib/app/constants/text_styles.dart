@@ -9,7 +9,7 @@ abstract class Styles {
   );
 
   static final kbodyLargeTextStyle = GoogleFonts.poppins(
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w600,
     fontSize: 16.sp,
   );
 

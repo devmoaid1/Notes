@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../data/models/note.dart';
+import '../../note/widgets/post_card.dart';
 
 class NotesList extends StatelessWidget {
   final List<Note> notes;
@@ -14,12 +15,11 @@ class NotesList extends StatelessWidget {
     return ListView.builder(
       itemCount: notes.length,
       physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true, // Replace with your actual list size
+      shrinkWrap: true,
       itemBuilder: (BuildContext context, int index) {
         final note = notes[index];
-        return ListTile(
-          title: Text('Note $index'),
-          subtitle: Text('Details of Note ${note.body}'),
+        return NoteCard(
+          note: note,
         );
       },
     );
