@@ -3,6 +3,7 @@ import 'package:flutter_jsonplaceholder/app/constants/app_assets.dart';
 import 'package:flutter_jsonplaceholder/app/constants/layouts.dart';
 import 'package:flutter_jsonplaceholder/app/utils/extensions/app_context.dart';
 import 'package:flutter_jsonplaceholder/app/utils/extensions/spaces.dart';
+import 'package:flutter_jsonplaceholder/app/utils/format_date.dart';
 import 'package:flutter_jsonplaceholder/presentation/home/home_viewmodel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,14 +50,25 @@ class NoteCard extends ViewModelWidget<HomeViewmodel> {
                       style: context.appTextTheme.bodyLarge),
                 ),
                 8.h.vSpace,
-                SizedBox(
-                  height: 50.h,
-                  width: constraints.maxWidth * 0.7,
-                  child: Text(note.body!,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 45.h,
+                      width: constraints.maxWidth * 0.6,
+                      child: Text(note.body!,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: context.appTextTheme.bodyMedium!
+                              .copyWith(color: context.appTheme.hintColor)),
+                    ),
+                    10.w.hSpace,
+                    Text(
+                      formatDate(note.createdAt!),
                       style: context.appTextTheme.bodyMedium!
-                          .copyWith(color: context.appTheme.hintColor)),
+                          .copyWith(color: context.appTheme.hintColor),
+                    )
+                  ],
                 )
               ],
             ),

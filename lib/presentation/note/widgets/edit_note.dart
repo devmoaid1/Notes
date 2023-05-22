@@ -25,7 +25,6 @@ class _EditNoteViewState extends State<EditNoteView> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     titleController.dispose();
     bodyController.dispose();
