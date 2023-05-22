@@ -1,10 +1,16 @@
-# flutter_jsonplaceholder
+# Notes
 
-A flutter blog app built with stacked Mvvm architecture.
+A  Notes app for quick and easy access to user thoughts and ideas built with stacked Mvvm architecture.
+
+
+<h2> Splash screen</h2>
+ 
+<img src="screenshots/Splash screen.png"></img>
+
 
 <h2> Home Page </h2>
  
-<img src="screenshots/Home%20Page.png"></img>
+<img src="screenshots/home.png"></img>
  
 
 ![image](https://user-images.githubusercontent.com/68110578/148684451-167b12c1-07c7-45b8-991b-c7babb8fa17a.png)
