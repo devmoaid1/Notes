@@ -8,9 +8,11 @@ import 'package:stacked/stacked.dart';
 
 import '../../../app/di/dependency.dart';
 import '../../../app/widgets/custom_text_field.dart';
+import '../../../data/models/note.dart';
 
 class AddNoteBody extends StatefulWidget {
-  const AddNoteBody({super.key});
+  final Note? note;
+  const AddNoteBody({super.key, this.note});
 
   @override
   State<AddNoteBody> createState() => _AddNoteBodyState();
@@ -27,8 +29,15 @@ class _AddNoteBodyState extends State<AddNoteBody> {
   @override
   void initState() {
     super.initState();
-    _titleController = TextEditingController();
-    _bodyController = TextEditingController();
+    if (widget.note != null) {
+      title = widget.note!.title!;
+      body = widget.note!.body!;
+      _titleController = TextEditingController(text: widget.note!.title);
+      _bodyController = TextEditingController(text: widget.note!.body);
+    } else {
+      _titleController = TextEditingController(text: "");
+      _bodyController = TextEditingController(text: "");
+    }
   }
 
   @override
@@ -47,7 +56,7 @@ class _AddNoteBodyState extends State<AddNoteBody> {
         padding: EdgeInsets.only(left: 20.w),
         child: SingleChildScrollView(
           child: ViewModelBuilder<AddNoteViewModel>.nonReactive(
-            onViewModelReady: (viewModel) => viewModel.onInit(),
+            onViewModelReady: (viewModel) => viewModel.onInit(widget.note),
             fireOnViewModelReadyOnce: true,
             builder: (BuildContext context, AddNoteViewModel viewModel,
                 Widget? child) {
@@ -55,8 +64,15 @@ class _AddNoteBodyState extends State<AddNoteBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomHeader(
-                    title: 'New Note',
-                    onTap: () => viewModel.addNote(title, body, context),
+                    title:
+                        widget.note != null ? widget.note!.title! : 'New Note',
+                    onTap: () {
+                      if (widget.note != null) {
+                        viewModel.editNote(title, body, context);
+                      } else {
+                        viewModel.addNote(title, body, context);
+                      }
+                    },
                   ),
                   10.h.vSpace,
                   CustomTextField(

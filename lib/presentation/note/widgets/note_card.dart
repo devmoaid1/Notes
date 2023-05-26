@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jsonplaceholder/app/constants/app_assets.dart';
 import 'package:flutter_jsonplaceholder/app/constants/layouts.dart';
+import 'package:flutter_jsonplaceholder/app/routing/routes.dart';
 import 'package:flutter_jsonplaceholder/app/utils/extensions/app_context.dart';
 import 'package:flutter_jsonplaceholder/app/utils/extensions/spaces.dart';
 import 'package:flutter_jsonplaceholder/app/utils/format_date.dart';
 import 'package:flutter_jsonplaceholder/presentation/home/home_viewmodel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../data/models/note.dart';
@@ -30,6 +32,7 @@ class NoteCard extends ViewModelWidget<HomeViewmodel> {
       },
       child: LayoutBuilder(builder: (context, constraints) {
         return InkWell(
+          onTap: () => context.push(addNoteRoute, extra: note),
           child: Container(
             width: constraints.maxWidth,
             padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),

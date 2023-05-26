@@ -14,8 +14,13 @@ class AddNoteViewModel extends BaseViewModel {
   Note get note => _note;
   final NotesService notesService;
 
-  void onInit() {
-    _note = const Note();
+  void onInit([Note? note]) {
+    // if there is note set it else set to new note
+    if (note != null) {
+      _note = note;
+    } else {
+      _note = const Note();
+    }
   }
 
   void onTitleCompleted(String title) {
@@ -33,6 +38,22 @@ class AddNoteViewModel extends BaseViewModel {
       _note =
           _note.copyWith(title: title, body: body, createdAt: DateTime.now());
       final response = await notesService.createNote(note);
+      response.fold(
+        (failure) => setError(failure.message),
+        (success) {},
+      );
+    }
+
+    context.pushReplacement(homeRoute);
+  }
+
+  void editNote(String title, String body, BuildContext context) async {
+    Note editedNote =
+        Note(body: body, title: title, createdAt: _note.createdAt);
+
+    if (editedNote != _note) {
+      editedNote = editedNote.copyWith(createdAt: DateTime.now());
+      final response = await notesService.editNote(editedNote, _note);
       response.fold(
         (failure) => setError(failure.message),
         (success) {},

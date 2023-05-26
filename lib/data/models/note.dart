@@ -28,5 +28,8 @@ class Note extends Equatable {
       );
 
   @override
-  List<Object?> get props => [title, body, createdAt];
+  List<Object?> get props => [
+        title,
+        body,
+      ];
 }

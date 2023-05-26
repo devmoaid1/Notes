@@ -28,7 +28,7 @@ class AppRouter {
         ),
         GoRoute(
           path: addNoteRoute,
-          builder: (context, state) => const AddNoteView(),
+          builder: (context, state) => AddNoteView(note: state.extra as Note?),
         ),
         GoRoute(
           path: editNoteRoute,

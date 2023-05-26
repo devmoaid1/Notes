@@ -78,4 +78,22 @@ class HiveStorageService implements HiveStorageProvider {
       throw const CacheException();
     }
   }
+
+  @override
+  Future<void> editData<T>(T value, T oldValue, [String? boxName]) async {
+    try {
+      if (!Hive.isBoxOpen(boxName!)) {
+        await Hive.openBox<T>(boxName);
+      }
+      final box = Hive.box<T>(boxName);
+      // if given value doesnt exist add it to box
+
+      // get index to remove old value then add new value
+      final index = box.values.toList().indexOf(oldValue);
+      box.deleteAt(index);
+      box.add(value);
+    } catch (err) {
+      throw const CacheException();
+    }
+  }
 }

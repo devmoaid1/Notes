@@ -11,7 +11,7 @@ abstract class NotesService {
   Future<Either<Failure, List<Note>>> fetchNotes();
   Future<Either<Failure, void>> createNote(Note note);
   Future<Either<Failure, void>> deleteNote(Note note);
-  Future<Either<Failure, void>> editNote(int id, Note note);
+  Future<Either<Failure, void>> editNote(Note note, Note oldNote);
 }
 
 class NotesServiceImpl implements NotesService {
@@ -42,10 +42,10 @@ class NotesServiceImpl implements NotesService {
   }
 
   @override
-  Future<Either<Failure, void>> editNote(int id, Note note) async {
+  Future<Either<Failure, void>> editNote(Note note, Note oldNote) async {
     try {
-      final resposne =
-          await localStorageProvider.addData<Note>(note, AppStrings.notesBox);
+      final resposne = await localStorageProvider.editData<Note>(
+          note, oldNote, AppStrings.notesBox);
       return Right(resposne);
     } on CacheException catch (err) {
       return Left(Failure(message: err.message!));

@@ -6,4 +6,5 @@ abstract class LocalStorageProvider {
 
 abstract class HiveStorageProvider extends LocalStorageProvider {
   Future<void> addData<T>(T value, [String boxName]);
+  Future<void> editData<T>(T value, T oldValue, [String boxName]);
 }
