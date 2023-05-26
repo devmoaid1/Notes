@@ -10,11 +10,10 @@ class HomeViewmodel extends BaseViewModel {
 
   List<Note> _notes = List.empty(growable: true);
 
-  // final String _error = '';
-
-  // String get errorMessage => _error;
+  List<Note> _filteredNotes = List.empty(growable: true);
 
   List<Note> get notes => _notes;
+  List<Note> get filteredNotes => _filteredNotes;
 
   void getAllNotes() async {
     setBusy(true);
@@ -26,6 +25,24 @@ class HomeViewmodel extends BaseViewModel {
       (notes) => _notes = notes,
     );
     setBusy(false);
+  }
+
+  void searchNotes(String query) {
+    setBusy(true); // Show loading state
+
+    if (query.isEmpty) {
+      // If the search query is empty, show all notes
+      _filteredNotes = List.from(_notes);
+    } else {
+      // Filter notes based on the search query
+      _filteredNotes = notes
+          .where(
+              (note) => note.title!.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+
+    setBusy(false); // Hide loading state
+    notifyListeners();
   }
 
   void deleteNote(Note note) async {

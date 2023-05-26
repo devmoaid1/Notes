@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_jsonplaceholder/app/utils/extensions/app_context.dart';
 import 'package:flutter_jsonplaceholder/app/utils/extensions/spaces.dart';
 import 'package:flutter_jsonplaceholder/app/widgets/custom_text_field.dart';
+import 'package:flutter_jsonplaceholder/presentation/home/home_viewmodel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeSearchSection extends StatefulWidget {
-  const HomeSearchSection({super.key});
+  final HomeViewmodel homeViewModel;
+  const HomeSearchSection({super.key, required this.homeViewModel});
 
   @override
   State<HomeSearchSection> createState() => _HomeSearchSectionState();
@@ -42,7 +44,7 @@ class _HomeSearchSectionState extends State<HomeSearchSection> {
           ),
           controller: _searchController,
           labelText: 'type note title...',
-          onChanged: (value) {},
+          onChanged: (value) => widget.homeViewModel.searchNotes(value),
           onEditingComplete: () {},
           filled: true,
           fillColor: context.appTheme.cardColor,
